@@ -1,5 +1,7 @@
 #[allow(dead_code)]
 #[derive(Debug)]
+
+//Structure for Node
 struct Node <T>{
     value : T,                      
     next : Option<Box<Node<T>>>
@@ -20,6 +22,24 @@ impl<T> Node<T> {
     }
 }
 
+//Structure for linked list which consists of "head" and "length"
+struct Linked_List<T> {
+    head : Option<Box<Node<T>>>,
+    length : u32
+}
+
+impl<T> Linked_List<T> {
+    
+    //Creates an empty Linked List
+    fn new() -> Linked_List<T>{
+        Linked_List 
+        { 
+            head: None,
+            length: 0
+        }
+    }
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -27,6 +47,7 @@ mod tests {
     #[test]
     fn it_works() {
         let node1 = Node::new(20);
-        assert_eq!(node1.value,20)
+        let ll: Linked_List<i32> = Linked_List::new();
+        assert_eq!(ll.length,0)
     }
 }
