@@ -23,7 +23,7 @@ To get started with any project, follow the instructions below:
 1. Clone the repository to your local machine:
 
    ```shell
-   git clone https://github.com/piyushhagarwal/rust-basic-projects.git
+   https://github.com/piyushhagarwal/Rust-basic-programs.git
 
 2. Navigate to the project directory:
 
