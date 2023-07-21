@@ -1,3 +1,8 @@
+//Installed "cargo-watch" crate to rerun the server whenever a change is made.
+//It is similat to nodemon in javascript
+//command to run the server: "cargo watch -x run"
+
+
 use axum::{Router, routing::get, Json};
 use std::net::SocketAddr;
 use serde::Serialize;
@@ -26,7 +31,7 @@ async fn main() {
     //This function returns a json object as a response for this function.
     async fn handler_function () -> Json<Message>{
         Json(Message { 
-            message: String::from("Hello, world") 
+            message: String::from("Hello, world. I am test") 
         })
         //This Json function serializes(convert struct into json) the Message struct.
     }
