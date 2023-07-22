@@ -16,6 +16,10 @@ This repository contains a collection of small Rust projects. Each project is de
    
    The Minigrep program takes two command-line arguments: a search query and a file name. It reads the specified    file, searches for lines that contain the search query, and prints those lines to the console.
 
+4. [**Web Server**:](https://github.com/piyushhagarwal/Rust-basic-programs/tree/main/web_server)
+
+   This is basic web server built with the help of Axum. The program contains get routes(handling dynamic routes and query parameters) and a post request.
+
 ## Getting Started
 
 To get started with any project, follow the instructions below:
