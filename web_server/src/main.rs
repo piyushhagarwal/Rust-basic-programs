@@ -3,7 +3,7 @@
 //command to run the server: "cargo watch -x run"
 
 
-use axum::{Router, routing::{get,post}, Json};
+use axum::{Router, routing::{get,post}, Json, TypedHeader, headers::UserAgent, http::HeaderMap};
 use axum::extract::{Path, Query};
 use std::net::SocketAddr;
 use serde::{Serialize,Deserialize};
@@ -16,7 +16,9 @@ async fn main() {
         .route("/test/:id", get(handle_id)) //syntax for handling dynamic routes
         .route("/:user_id/team/:team_id",get(handle_multiple_ids)) //Syntax for handling 2 or more dynamic parameters
         .route("/queryparams", get(handle_query))
-        .route("/post", post(handle_post));
+        .route("/post", post(handle_post))
+        .route("/user_agent_header",get(user_agent_header))
+        .route("/custom_header",get(custom_headers));
 
 
     //Code to start the server
@@ -71,6 +73,21 @@ async fn main() {
     //This function gets the body of the api as an argument and returns a json of UserData type
     async fn handle_post(user_data: Json<UserData>) -> Json<UserData> {
         Json(UserData { name: user_data.name.to_string(), age: user_data.age })
+    }
+
+    //Fuction to get user_agent header
+
+    //Add "headers" feature before using this function because it is not downloaded by default in axum
+    // cargo add axum -F headers
+    async fn user_agent_header(TypedHeader(user_agent): TypedHeader<UserAgent>) -> String {
+        user_agent.to_string()
+    }
+
+    //Function to get any custom header or even prebuilt headers
+    async fn custom_headers(headers: HeaderMap) -> String {
+        let header_value = headers.get("any_custom_key").unwrap();
+        let value = header_value.to_str().unwrap().to_owned();
+        value
     }
 }
 
