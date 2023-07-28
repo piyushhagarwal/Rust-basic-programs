@@ -1,26 +1,36 @@
+
+struct Source<T>{
+    id: Option<T>,
+    name: String,
+}
+struct Article{
+    source: Source<i32>,
+    name: String,
+    author: String,
+    title: String,
+    description: String
+
+}
+
+
 #[tokio::main]
 async fn main() {
 
-    //This is a simple get request
-    let result = reqwest::get("https://api.spotify.com/v1/search").await.unwrap().text().await.unwrap();
-    //.text gives the actual body of the response
-
-    println!("{:#?}",result);//This syntax helps to prettify the output
-
+    let api_key = "7d20478f4cc6481eb401e66d7d5ca7b6";
     //Creating a get request using Client and adding headers to it
+  
+    let url = format!("https://newsapi.org/v2/everything?q=tesla&from=2023-06-28&sortBy=publishedAt&apiKey={api_key}");
 
     let client = reqwest::Client::new();
 
     let response = client
-        .get("https://api.spotify.com/v1/search")
-        .header("AUTHORIZATION", "Bearer [AUTH_TOKEN]")
-        .header("CONTENT_TYPE", "application/json")
-        .header("ACCEPT", "application/json")
+        .get(url)
         .send()
         .await.
-        unwrap().
-        text().
-        await;
+        unwrap()
+        .text()
+        .await
+        .unwrap();
 
     println!("{:#?}",response)
 
