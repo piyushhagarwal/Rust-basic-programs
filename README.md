@@ -20,6 +20,10 @@ This repository contains a collection of small Rust projects. Each project is de
 
    This is basic web server built with the help of Axum. The program contains get routes(handling dynamic routes and query parameters) and a post request.
 
+5. [**Reqwest**](https://github.com/piyushhagarwal/Rust-basic-projects/tree/main/web_server)
+
+   A basic api fetching program which fetches the data from one of the api provided by NewsApi using reqwest crate and then converts the response (Json string) into a Struct using serde_json.
+
 ## Getting Started
 
 To get started with any project, follow the instructions below:
