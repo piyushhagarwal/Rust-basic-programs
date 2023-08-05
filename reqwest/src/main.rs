@@ -36,7 +36,7 @@ async fn main() {
     let client = reqwest::Client::new();
 
     let json_str = client
-        .get(url)
+        .get("http://localhost:3001/3")
         .send()    //Sends the request
         .await
         .unwrap()
@@ -44,11 +44,11 @@ async fn main() {
         .await
         .unwrap();
 
-    let response : Response = serde_json::from_str(&json_str).expect("Failed to deserialize JSON"); 
+    // let response : Response = serde_json::from_str(&json_str).expect("Failed to deserialize JSON"); 
     // Converts Json string into a valid struct on which we can perform various operations
 
 
-    println!("{:#?}",response) //This is to beautify the response 
+    println!("{:#?}",json_str) //This is to beautify the response 
 
 }
 
