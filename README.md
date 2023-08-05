@@ -24,6 +24,10 @@ This repository contains a collection of small Rust projects. Each project is de
 
    A basic api fetching program which fetches the data from one of the api provided by NewsApi using reqwest crate and then converts the response (Json string) into a Struct using serde_json.
 
+6. [**Queue**](https://github.com/piyushhagarwal/Rust-basic-projects/tree/main/queue)
+
+   Implementation of Queue data structure.
+
 ## Getting Started
 
 To get started with any project, follow the instructions below:
